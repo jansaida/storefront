@@ -25,8 +25,13 @@ export const calcEnvironment = () => {
 
 function buildConfigURL(environment) {
   const env = environment || calcEnvironment();
-  const configURL = new URL(`${window.location.origin}/configs.json`);
-  configURL.searchParams.set('sheet', env);
+  let configURL = new URL(`${window.location.origin}/configs.json`);
+  if (env == 'dev') {
+    configURL = new URL(`${window.location.origin}/configs-dev.json`);
+  }
+  if (env == 'stage') {
+    configURL = new URL(`${window.location.origin}/configs-stage.json`);
+  }
   return configURL;
 }
 
