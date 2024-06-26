@@ -26,10 +26,10 @@ export const calcEnvironment = () => {
 function buildConfigURL(environment) {
   const env = environment || calcEnvironment();
   let configURL = new URL(`${window.location.origin}/configs.json`);
-  if (env == 'dev') {
+  if (env === 'dev') {
     configURL = new URL(`${window.location.origin}/configs-dev.json`);
   }
-  if (env == 'stage') {
+  if (env === 'stage') {
     configURL = new URL(`${window.location.origin}/configs-stage.json`);
   }
   return configURL;
